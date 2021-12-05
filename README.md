@@ -1,24 +1,24 @@
-![GitHub Repo stars](https://img.shields.io/github/stars/wyy-go/yview?style=social)
-![GitHub](https://img.shields.io/github/license/wyy-go/yview)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/wyy-go/yview)
-![GitHub all releases](https://img.shields.io/github/downloads/wyy-go/yview/total)
-![GitHub CI Status](https://img.shields.io/github/workflow/status/wyy-go/yview/ci?label=CI)
-[![Go Report Card](https://goreportcard.com/badge/github.com/wyy-go/yview)](https://goreportcard.com/report/github.com/wyy-go/yview)
-[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/wyy-go/yview?tab=doc)
-[![codecov](https://codecov.io/gh/wyy-go/yview/branch/main/graph/badge.svg)](https://codecov.io/gh/wyy-go/yview)
+![GitHub Repo stars](https://img.shields.io/github/stars/wyy-go/wview?style=social)
+![GitHub](https://img.shields.io/github/license/wyy-go/wview)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/wyy-go/wview)
+![GitHub all releases](https://img.shields.io/github/downloads/wyy-go/wview/total)
+![GitHub CI Status](https://img.shields.io/github/workflow/status/wyy-go/wview/ci?label=CI)
+[![Go Report Card](https://goreportcard.com/badge/github.com/wyy-go/wview)](https://goreportcard.com/report/github.com/wyy-go/wview)
+[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/wyy-go/wview?tab=doc)
+[![codecov](https://codecov.io/gh/wyy-go/wview/branch/main/graph/badge.svg)](https://codecov.io/gh/wyy-go/wview)
 
-# yview
-yview is a lightweight, minimalist and idiomatic template library based on golang [html/template](https://golang.org/pkg/html/template/) for building Go web application.
+# wview
+wview is a lightweight, minimalist and idiomatic template library based on golang [html/template](https://golang.org/pkg/html/template/) for building Go web application.
 
 ## Contents
 
 - [Install](#install)
 - [Features](#features)
 - [Supports](#supports)
-  - [Gin Framework](https://github.com/wyy-go/yview/tree/main/plugin/ginview)
-  - [Iris Framework](https://github.com/wyy-go/yview/tree/main/plugin/irisview)
-  - [Echo Framework](https://github.com/wyy-go/yview/tree/main/plugin/echoview)
-  - [Go.Rice](https://github.com/wyy-go/yview/tree/main/plugin/gorice)
+  - [Gin Framework](https://github.com/wyy-go/wview/tree/main/plugin/ginview)
+  - [Iris Framework](https://github.com/wyy-go/wview/tree/main/plugin/irisview)
+  - [Echo Framework](https://github.com/wyy-go/wview/tree/main/plugin/echoview)
+  - [Go.Rice](https://github.com/wyy-go/wview/tree/main/plugin/gorice)
 - [Usage](#usage)
   - [Overview](#overview)
   - [Config](#config)
@@ -41,7 +41,7 @@ yview is a lightweight, minimalist and idiomatic template library based on golan
 ## Install
 
 ```bash
-go get github.com/wyy-go/yview
+go get github.com/wyy-go/wview
 ```
 
 
@@ -63,10 +63,10 @@ go get github.com/wyy-go/yview
 
 ## Supports
 
-- **[ginview](https://github.com/wyy-go/yview/tree/main/plugin/ginview)** yview for gin framework
-- **[irisview](https://github.com/wyy-go/yview/tree/main/plugin/irisview)** yview for Iris framework
-- **[echoview](https://github.com/wyy-go/yview/tree/main/plugin/echoview)** yview for echo framework
-- **[gorice](https://github.com/wyy-go/yview/tree/main/plugin/gorice)** yview for go.rice
+- **[ginview](https://github.com/wyy-go/wview/tree/main/plugin/ginview)** wview for gin framework
+- **[irisview](https://github.com/wyy-go/wview/tree/main/plugin/irisview)** wview for Iris framework
+- **[echoview](https://github.com/wyy-go/wview/tree/main/plugin/echoview)** wview for echo framework
+- **[gorice](https://github.com/wyy-go/wview/tree/main/plugin/gorice)** wview for go.rice
 - go embed
 
 
@@ -90,13 +90,13 @@ Use default instance:
 ```go
 //write http.ResponseWriter
 //"index" -> index.html
-yview.Render(writer, http.StatusOK, "index", yview.M{})
+wview.Render(writer, http.StatusOK, "index", wview.M{})
 ```
 
 Use new instance with config:
 
 ```go
-gv := yview.New(yview.Config{
+wv := wview.New(wview.Config{
     Root:      "views",
     Extension: ".tpl",
     Master:    "layouts/master",
@@ -114,10 +114,10 @@ Delims:    Delims{Left: "{{", Right: "}}"},
 })
 
 //Set new instance
-yview.Use(gv)
+wview.Use(wv)
 
 //write http.ResponseWriter
-yview.Render(writer, http.StatusOK, "index", yview.M{})
+wview.Render(writer, http.StatusOK, "index", wview.M{})
 ```
 
 
@@ -125,7 +125,7 @@ Use multiple instance with config:
 
 ```go
 //============== Frontend ============== //
-yvFrontend := yview.New(yview.Config{
+wvFrontend := wview.New(wview.Config{
     Root:      "views/frontend",
     Extension: ".tpl",
     Master:    "layouts/master",
@@ -143,10 +143,10 @@ Delims:       Delims{Left: "{{", Right: "}}"},
 })
 
 //write http.ResponseWriter
-yvFrontend.Render(writer, http.StatusOK, "index", yview.M{})
+wvFrontend.Render(writer, http.StatusOK, "index", wview.M{})
 
 //============== Backend ============== //
-yvBackend := yview.New(yview.Config{
+wvBackend := wview.New(wview.Config{
     Root:      "views/backend",
     Extension: ".tpl",
     Master:    "layouts/master",
@@ -164,14 +164,14 @@ Delims:       Delims{Left: "{{", Right: "}}"},
 })
 
 //write http.ResponseWriter
-yvBackend.Render(writer, http.StatusOK, "index", yview.M{})
+wvBackend.Render(writer, http.StatusOK, "index", wview.M{})
 
 ```
 
 ### Config
 
 ```go
-yview.Config{
+wview.Config{
     Root:      "views", //template root path
     Extension: ".tpl", //file extension
     Master:    "layouts/master", //master layout file
@@ -210,7 +210,7 @@ Render with master
 
 ```go
 //use name without extension `.html`
-yview.Render(w, http.StatusOK, "index", yview.M{})
+wview.Render(w, http.StatusOK, "index", wview.M{})
 ```
 
 The `w` is instance of  `http.ResponseWriter`
@@ -219,7 +219,7 @@ Render only file(not use master layout)
 
 ```go
 //use full name with extension `.html`
-yview.Render(w, http.StatusOK, "page.html", yview.M{})
+wview.Render(w, http.StatusOK, "page.html", wview.M{})
 ```
 
 ### Custom template functions
@@ -229,7 +229,7 @@ We have two type of functions `global functions`, and `temporary functions`.
 `Global functions` are set within the `config`.
 
 ```go
-yview.Config{
+wview.Config{
 	Funcs: template.FuncMap{
 		"reverse": e.Reverse,
 	},
@@ -245,7 +245,7 @@ yview.Config{
 
 ```go
 http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	err := yview.Render(w, http.StatusOK, "index", yview.M{
+	err := wview.Render(w, http.StatusOK, "index", wview.M{
 		"reverse": e.Reverse,
 	})
 	if err != nil {
@@ -263,7 +263,7 @@ http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
 ## Examples
 
-See [_examples/](https://github.com/wyy-go/yview/tree/main/_examples/) for a variety of examples.
+See [_examples/](https://github.com/wyy-go/wview/tree/main/_examples/) for a variety of examples.
 
 
 ### Basic example
@@ -273,7 +273,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/wyy-go/yview"
+	"github.com/wyy-go/wview"
 	"net/http"
 )
 
@@ -281,7 +281,7 @@ func main() {
 
 	//render index use `index` without `.html` extension, that will render with master layout.
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "index", yview.M{
+		err := wview.Render(w, http.StatusOK, "index", wview.M{
 			"title": "Index title!",
 			"add": func(a int, b int) int {
 				return a + b
@@ -295,7 +295,7 @@ func main() {
 
 	//render page use `page.tpl` with '.html' will only file template without master layout.
 	http.HandleFunc("/page", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "page.html", yview.M{"title": "Page file title!!"})
+		err := wview.Render(w, http.StatusOK, "page.html", wview.M{"title": "Page file title!!"})
 		if err != nil {
 			fmt.Fprintf(w, "Render page.html error: %v!", err)
 		}
@@ -322,20 +322,20 @@ Project structure:
 See in "examples/basic" folder
 ```
 
-[Basic example](https://github.com/wyy-go/yview/tree/main/_examples/basic)
+[Basic example](https://github.com/wyy-go/wview/tree/main/_examples/basic)
 
 
 ### Gin example
 
 ```bash
-go get github.com/wyy-go/yview/plugin/ginview
+go get github.com/wyy-go/wview/plugin/ginview
 ```
 
 ```go
 package main
 
 import (
-	"github.com/wyy-go/yview/plugin/ginview"
+	"github.com/wyy-go/wview/plugin/ginview"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -344,7 +344,7 @@ func main() {
 	router := gin.Default()
 
 	//new template engine
-	router.HTMLRender = yview.Default()
+	router.HTMLRender = wview.Default()
 
 	router.GET("/", func(ctx *gin.Context) {
 		//render with master
@@ -380,26 +380,26 @@ Project structure:
 See in "examples/basic" folder
 ```
 
-[Gin example](https://github.com/wyy-go/yview/tree/main/_examples/gin)
+[Gin example](https://github.com/wyy-go/wview/tree/main/_examples/gin)
 
 ### Iris example
 
 ```bash
-$ go get github.com/wyy-go/yview/plugin/irisview
+$ go get github.com/wyy-go/wview/plugin/irisview
 ```
 
 ```go
 package main
 
 import (
-	"github.com/wyy-go/yview/main/irisview"
+	"github.com/wyy-go/wview/main/irisview"
 	"github.com/kataras/iris/v12"
 )
 
 func main() {
 	app := iris.New()
 
-	// Register the yview template engine.
+	// Register the wview template engine.
 	app.RegisterView(irisview.Default())
 
 	app.Get("/", func(ctx iris.Context) {
@@ -435,7 +435,7 @@ Project structure:
 See in "examples/iris" folder
 ```
 
-[Iris example](https://github.com/wyy-go/yview/tree/main/_examples/iris)
+[Iris example](https://github.com/wyy-go/wview/tree/main/_examples/iris)
 
 
 ### Iris multiple example
@@ -447,8 +447,8 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/wyy-go/yview"
-	"github.com/wyy-go/yview/plugin/irisview"
+	"github.com/wyy-go/wview"
+	"github.com/wyy-go/wview/plugin/irisview"
 	"github.com/kataras/iris/v12"
 )
 
@@ -456,7 +456,7 @@ func main() {
 	app := iris.New()
 
 	// Register a new template engine.
-	app.RegisterView(irisview.New(yview.Config{
+	app.RegisterView(irisview.New(wview.Config{
 		Root:      "views/frontend",
 		Extension: ".html",
 		Master:    "layouts/master",
@@ -478,7 +478,7 @@ func main() {
 	//=========== Backend ===========//
 
 	// Assign a new template middleware.
-	mw := irisview.NewMiddleware(yview.Config{
+	mw := irisview.NewMiddleware(wview.Config{
 		Root:      "views/backend",
 		Extension: ".html",
 		Master:    "layouts/master",
@@ -527,20 +527,20 @@ Project structure:
 See in "examples/iris-multiple" folder
 ```
 
-[Iris multiple example](https://github.com/wyy-go/yview/tree/main/_examples/iris-multiple)
+[Iris multiple example](https://github.com/wyy-go/wview/tree/main/_examples/iris-multiple)
 
 ### Echo example
 
 Echo <=v3 version:
 
 ```bash
-go get github.com/wyy-go/yview/plugin/echoview
+go get github.com/wyy-go/wview/plugin/echoview
 ```
 
 Echo v4 version:
 
 ```bash
-go get github.com/wyy-go/yview/plugin/echoview-v4
+go get github.com/wyy-go/wview/plugin/echoview-v4
 ```
 
 
@@ -548,7 +548,7 @@ go get github.com/wyy-go/yview/plugin/echoview-v4
 package main
 
 import (
-	"github.com/wyy-go/yview/plugin/echoview"
+	"github.com/wyy-go/wview/plugin/echoview"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"net/http"
@@ -602,8 +602,8 @@ Project structure:
 See in "examples/basic" folder
 ```
 
-[Echo example](https://github.com/wyy-go/yview/tree/main/_examples/echo)
-[Echo v4 example](https://github.com/wyy-go/yview/tree/main/_examples/echo-v4)
+[Echo example](https://github.com/wyy-go/wview/tree/main/_examples/echo)
+[Echo v4 example](https://github.com/wyy-go/wview/tree/main/_examples/echo-v4)
 
 
 ### Go-chi example
@@ -613,7 +613,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/wyy-go/yview"
+	"github.com/wyy-go/wview"
 	"github.com/go-chi/chi"
 	"net/http"
 )
@@ -624,7 +624,7 @@ func main() {
 
 	//render index use `index` without `.html` extension, that will render with master layout.
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "index", yview.M{
+		err := wview.Render(w, http.StatusOK, "index", wview.M{
 			"title": "Index title!",
 			"add": func(a int, b int) int {
 				return a + b
@@ -637,7 +637,7 @@ func main() {
 
 	//render page use `page.tpl` with '.html' will only file template without master layout.
 	r.Get("/page", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "page.html", yview.M{"title": "Page file title!!"})
+		err := wview.Render(w, http.StatusOK, "page.html", wview.M{"title": "Page file title!!"})
 		if err != nil {
 			fmt.Fprintf(w, "Render page.html error: %v!", err)
 		}
@@ -664,7 +664,7 @@ Project structure:
 See in "examples/basic" folder
 ```
 
-[Chi example](https://github.com/wyy-go/yview/tree/main/_examples/go-chi)
+[Chi example](https://github.com/wyy-go/wview/tree/main/_examples/go-chi)
 
 
 
@@ -675,7 +675,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/wyy-go/yview"
+	"github.com/wyy-go/wview"
 	"html/template"
 	"net/http"
 	"time"
@@ -683,7 +683,7 @@ import (
 
 func main() {
 
-	gv := yview.New(yview.Config{
+	wv := wview.New(wview.Config{
 		Root:      "views",
 		Extension: ".tpl",
 		Master:    "layouts/master",
@@ -700,11 +700,11 @@ func main() {
 	})
 
 	//Set new instance
-	yview.Use(gv)
+	wview.Use(wv)
 
 	//render index use `index` without `.html` extension, that will render with master layout.
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "index", yview.M{
+		err := wview.Render(w, http.StatusOK, "index", wview.M{
 			"title": "Index title!",
 			"add": func(a int, b int) int {
 				return a + b
@@ -718,7 +718,7 @@ func main() {
 
 	//render page use `page.tpl` with '.html' will only file template without master layout.
 	http.HandleFunc("/page", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "page.tpl", yview.M{"title": "Page file title!!"})
+		err := wview.Render(w, http.StatusOK, "page.tpl", wview.M{"title": "Page file title!!"})
 		if err != nil {
 			fmt.Fprintf(w, "Render page.html error: %v!", err)
 		}
@@ -747,7 +747,7 @@ Project structure:
 See in "examples/advance" folder
 ```
 
-[Advance example](https://github.com/wyy-go/yview/tree/main/_examples/advance)
+[Advance example](https://github.com/wyy-go/wview/tree/main/_examples/advance)
 
 ### Multiple example
 
@@ -759,7 +759,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/wyy-go/yview"
+	"github.com/wyy-go/wview"
 	"github.com/gin-gonic/gin"
 )
 
@@ -843,13 +843,13 @@ Project structure:
 See in "examples/multiple" folder
 ```
 
-[Multiple example](https://github.com/wyy-go/yview/tree/main/_examples/multiple)
+[Multiple example](https://github.com/wyy-go/wview/tree/main/_examples/multiple)
 
 
 ### go.rice example
 
 ```bash
-go get github.com/wyy-go/yview/plugin/gorice
+go get github.com/wyy-go/wview/plugin/gorice
 ```
 
 ```go
@@ -858,8 +858,8 @@ package main
 import (
 	"fmt"
 	"github.com/GeertJohan/go.rice"
-	"github.com/wyy-go/yview"
-	"github.com/wyy-go/yview/plugin/gorice"
+	"github.com/wyy-go/wview"
+	"github.com/wyy-go/wview/plugin/gorice"
 	"net/http"
 )
 
@@ -871,13 +871,13 @@ func main() {
 	http.Handle("/static/", staticFileServer)
 
 	//new view engine
-	gv := gorice.New(rice.MustFindBox("views"))
+	wv := gorice.New(rice.MustFindBox("views"))
 	//set engine for default instance
-	yview.Use(gv)
+	wview.Use(wv)
 
 	//render index use `index` without `.html` extension, that will render with master layout.
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "index", yview.M{
+		err := wview.Render(w, http.StatusOK, "index", wview.M{
 			"title": "Index title!",
 			"add": func(a int, b int) int {
 				return a + b
@@ -891,7 +891,7 @@ func main() {
 
 	//render page use `page.tpl` with '.html' will only file template without master layout.
 	http.HandleFunc("/page", func(w http.ResponseWriter, r *http.Request) {
-		err := yview.Render(w, http.StatusOK, "page.html", yview.M{"title": "Page file title!!"})
+		err := wview.Render(w, http.StatusOK, "page.html", wview.M{"title": "Page file title!!"})
 		if err != nil {
 			fmt.Fprintf(w, "Render page.html error: %v!", err)
 		}
@@ -921,11 +921,11 @@ Project structure:
 See in "examples/gorice" folder
 ```
 
-[gorice example](https://github.com/wyy-go/yview/tree/main/_examples/gorice)
+[gorice example](https://github.com/wyy-go/wview/tree/main/_examples/gorice)
 
 ### More examples
 
-See [_examples/](https://github.com/wyy-go/yview/tree/main/_examples/) for a variety of examples.
+See [_examples/](https://github.com/wyy-go/wview/tree/main/_examples/) for a variety of examples.
 
 
 ## Todo
