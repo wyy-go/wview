@@ -110,7 +110,7 @@ wv := wview.New(wview.Config{
         },
     },
     DisableCache: true,
-Delims:    Delims{Left: "{{", Right: "}}"},
+	Delims:    Delims{Left: "{{", Right: "}}"},
 })
 
 //Set new instance
@@ -139,7 +139,7 @@ wvFrontend := wview.New(wview.Config{
         },
     },
     DisableCache: true,
-Delims:       Delims{Left: "{{", Right: "}}"},
+	Delims:       Delims{Left: "{{", Right: "}}"},
 })
 
 //write http.ResponseWriter
@@ -160,7 +160,7 @@ wvBackend := wview.New(wview.Config{
         },
     },
     DisableCache: true,
-Delims:       Delims{Left: "{{", Right: "}}"},
+	Delims:       Delims{Left: "{{", Right: "}}"},
 })
 
 //write http.ResponseWriter
