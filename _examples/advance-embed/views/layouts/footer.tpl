@@ -1,0 +1,3 @@
+This page title: {{.Title}}
+----------
+Copyright &copy {{copy}} <a href="https://github.com/wyy-go" target="_blank">wyy-go</a>
